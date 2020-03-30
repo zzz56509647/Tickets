@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Week0329.Mvc.Models.Tickets>
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<p>
+    <input id="Button1" type="button" value="添加" onclick="location.href='/Buy/Add'" class="btn btn-primary" />
+</p>
+
+<p class="text-center">
+    <button id="add" name="add" class="btn btn-danger col-md-offset-2" onclick="javascript:location.href='/Buy/BuyT'">买&nbsp&nbsp&nbsp&nbsp票</button>
+</p>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            出发站
+        </th>
+        <th>
+            到达站
+        </th>
+        <th>
+            车次
+        </th>
+        <th>
+            发车时间
+        </th>
+        <th>
+            座位号
+        </th>
+        <th>
+            座位等级
+        </th>
+        <th>
+            票价
+        </th>
+        <th>
+            是否售出
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureStation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalStation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpenPoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketPrice)
+            </td>
+            <td>
+                @if (item.IsSaleOut)
+                {
+                    @:是
+                }
+                else
+                {
+                    @:否
+                }
+            </td>
+
+        </tr>
+    }
+
+</table>
